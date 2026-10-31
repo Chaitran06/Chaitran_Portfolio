@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <script>
+      // Apply the saved/requested theme before first paint (avoids a colour flash).
+      var themes = ["knight", "hero", "light", "terminal", "sunset"];
+      var wanted = new URLSearchParams(location.search).get("theme") || localStorage.getItem("theme-v2");
+      document.documentElement.dataset.theme = themes.indexOf(wanted) >= 0 ? wanted : "knight";
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>V. Sree Chaitran · AI/ML Engineer</title>
+    <meta name="description" content="Portfolio and AI assistant of V. Sree Chaitran: M.Tech Mathematics & Computing (NIT Delhi), deep-learning forecasting and LLM/RAG systems. Paste a job description to get an instant fit score." />
+    <meta property="og:title" content="V. Sree Chaitran · AI/ML Engineer" />
+    <meta property="og:description" content="Deep-learning forecasting & LLM systems. Ask my AI assistant or match your job description." />
+    <meta name="theme-color" content="#05090f" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%2309090b'/><text x='16' y='22' font-family='monospace' font-size='15' font-weight='700' text-anchor='middle' fill='%2322d3ee'>SC</text></svg>" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  </head>
+  <body class="bg-zinc-950 text-zinc-300 antialiased">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

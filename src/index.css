@@ -1,0 +1,170 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------- Themes ----------
+   --z-*: neutral scale, --i-*: main accent, --gold: second accent,
+   --f-*: folder colours (macOS folders follow the system accent colour). */
+[data-theme="hero"] {
+  /* Hero Red, Iron Man inspired: hot-rod red, gold trim, arc-reactor cyan glow */
+  --font-sans: "Inter";
+  --white: 255 255 255;
+  --z-50: 252 250 249; --z-100: 245 240 238; --z-200: 232 224 222; --z-300: 214 202 200; --z-400: 170 148 148;
+  --z-500: 128 100 101; --z-600: 96 66 68; --z-700: 70 42 45; --z-800: 48 27 30; --z-900: 26 14 16; --z-950: 12 7 8;
+  --i-50: 255 240 240; --i-200: 252 165 165; --i-300: 248 113 113; --i-400: 208 32 40; --i-500: 168 18 28; --i-600: 130 12 20;
+  --gold: 242 182 50;
+  --glow: 125 249 255;
+  --f-back-1: #e8b23a; --f-back-2: #b9821a; --f-front-1: #e5484f; --f-front-2: #b3121b;
+}
+:root:not([data-theme]), [data-theme="knight"] {
+  /* Dark Knight (default), Batman inspired: navy-black suit, electric-blue mist, gold belt */
+  --font-sans: "Inter";
+  --white: 255 255 255;
+  --z-50: 247 249 252; --z-100: 236 241 248; --z-200: 214 223 236; --z-300: 180 195 218; --z-400: 130 150 182;
+  --z-500: 85 105 140; --z-600: 55 74 108; --z-700: 34 50 80; --z-800: 22 34 56; --z-900: 11 18 32; --z-950: 5 9 18;
+  --i-50: 235 245 255; --i-200: 170 210 255; --i-300: 110 180 255; --i-400: 41 140 255; --i-500: 20 110 230; --i-600: 12 80 190;
+  --gold: 212 168 40;
+  --glow: 41 140 255;
+  --f-back-1: #1f6fd6; --f-back-2: #1554a8; --f-front-1: #63b3ff; --f-front-2: #2a86f0;
+}
+[data-theme="light"] {
+  --font-sans: "Inter";
+  --white: 9 9 11;
+  --z-50: 9 9 11; --z-100: 24 24 27; --z-200: 39 39 42; --z-300: 63 63 70; --z-400: 82 82 91;
+  --z-500: 113 113 122; --z-600: 150 150 160; --z-700: 205 205 212; --z-800: 226 226 231; --z-900: 255 255 255; --z-950: 247 247 249;
+  --i-50: 236 254 255; --i-200: 14 116 144; --i-300: 14 116 144; --i-400: 8 145 178; --i-500: 6 182 212; --i-600: 21 94 117;
+  --gold: 21 94 117;
+  --glow: 8 145 178;
+  --f-back-1: #3fa6e8; --f-back-2: #2a8bd4; --f-front-1: #8fdcfd; --f-front-2: #4ab8f2;
+}
+[data-theme="terminal"] {
+  --font-sans: "JetBrains Mono";
+  --white: 220 255 225;
+  --z-50: 235 250 235; --z-100: 215 240 215; --z-200: 190 230 190; --z-300: 160 210 165; --z-400: 120 170 125;
+  --z-500: 90 130 95; --z-600: 60 90 62; --z-700: 36 58 38; --z-800: 24 40 26; --z-900: 10 18 11; --z-950: 4 8 5;
+  --i-50: 240 253 244; --i-200: 187 247 208; --i-300: 134 239 172; --i-400: 74 222 128; --i-500: 34 197 94; --i-600: 22 163 74;
+  --gold: 134 239 172;
+  --glow: 74 222 128;
+  --f-back-1: #22a855; --f-back-2: #17863f; --f-front-1: #86efac; --f-front-2: #3ccf6e;
+}
+[data-theme="sunset"] {
+  --font-sans: "Inter";
+  --white: 255 255 255;
+  --z-50: 250 250 249; --z-100: 245 245 244; --z-200: 231 229 228; --z-300: 214 211 209; --z-400: 168 162 158;
+  --z-500: 120 113 108; --z-600: 87 83 78; --z-700: 68 64 60; --z-800: 41 37 36; --z-900: 28 25 23; --z-950: 12 10 9;
+  --i-50: 255 247 237; --i-200: 254 215 170; --i-300: 253 186 116; --i-400: 251 146 60; --i-500: 249 115 22; --i-600: 234 88 12;
+  --gold: 253 224 71;
+  --glow: 251 146 60;
+  --f-back-1: #f07a1e; --f-back-2: #c95f0e; --f-front-1: #fdba74; --f-front-2: #f98c2c;
+}
+
+/* Per-theme character beyond colour */
+[data-theme="hero"] .section-index { color: rgb(var(--gold)); }
+[data-theme="terminal"] .card, [data-theme="terminal"] .btn, [data-theme="terminal"] .icon-btn,
+[data-theme="terminal"] .chip, [data-theme="terminal"] textarea { border-radius: 4px !important; }
+[data-theme="terminal"] h1, [data-theme="terminal"] h2 { letter-spacing: -0.04em; }
+@media (min-width: 640px) { [data-theme="terminal"] h1 { font-size: 3.1rem; } }
+[data-theme="light"] .card { box-shadow: 0 1px 2px rgb(0 0 0 / 0.04), 0 8px 24px -12px rgb(0 0 0 / 0.08); backdrop-filter: none; }
+
+@layer base {
+  ::selection { @apply bg-ice-400/30 text-white; }
+  section[id] { scroll-margin-top: 5rem; }
+}
+
+@layer components {
+  .card { @apply relative rounded-2xl border border-zinc-800/80 bg-zinc-900/40 backdrop-blur-sm; }
+  .chip { @apply inline-flex items-center rounded-md border border-zinc-800 bg-zinc-900/80 px-2 py-0.5 font-mono text-[11px] text-zinc-400; }
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-medium transition focus:outline-none focus-visible:ring-2 focus-visible:ring-ice-400/60 disabled:cursor-not-allowed disabled:opacity-50; }
+  .btn-primary { @apply btn bg-ice-400 text-zinc-950 hover:bg-ice-300; }
+  .btn-ghost { @apply btn border border-zinc-800 bg-zinc-900/60 text-zinc-200 hover:border-zinc-700 hover:bg-zinc-800/80; }
+  .icon-btn { @apply inline-flex h-10 w-10 items-center justify-center rounded-lg border border-zinc-800 bg-zinc-900/60 text-zinc-400 transition hover:border-zinc-700 hover:text-white; }
+}
+
+/* Background glows (see Backdrop.tsx) */
+.orb { position: absolute; border-radius: 9999px; filter: blur(110px); will-change: transform; }
+.orb-1 { width: 46rem; height: 46rem; top: -16rem; left: -12rem; animation: drift-1 26s ease-in-out infinite alternate; }
+.orb-2 { width: 38rem; height: 38rem; top: 28%; right: -14rem; animation: drift-2 32s ease-in-out infinite alternate; }
+.orb-3 { width: 34rem; height: 34rem; bottom: -14rem; left: 30%; animation: drift-3 38s ease-in-out infinite alternate; }
+@keyframes drift-1 { to { transform: translate(18rem, 10rem) scale(1.15); } }
+@keyframes drift-2 { to { transform: translate(-16rem, -8rem) scale(0.9); } }
+@keyframes drift-3 { to { transform: translate(-12rem, -14rem) scale(1.1); } }
+[data-theme="light"] .orb { opacity: 0.6; }
+
+/* Fine film grain over everything for texture */
+.grain {
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27160%27 height=%27160%27%3E%3Cfilter id=%27n%27%3E%3CfeTurbulence type=%27fractalNoise%27 baseFrequency=%270.85%27 numOctaves=%273%27 stitchTiles=%27stitch%27/%3E%3C/filter%3E%3Crect width=%27100%25%27 height=%27100%25%27 filter=%27url(%23n)%27/%3E%3C/svg%3E");
+}
+
+/* Load-in animation (hero) */
+.reveal { animation: reveal 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+@keyframes reveal { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+
+.prose-chat p { margin: 0.35rem 0; }
+.prose-chat ul { list-style: disc; padding-left: 1.1rem; margin: 0.35rem 0; }
+.prose-chat ol { list-style: decimal; padding-left: 1.1rem; margin: 0.35rem 0; }
+.prose-chat li { margin: 0.15rem 0; }
+.prose-chat strong { color: rgb(var(--white)); font-weight: 600; }
+.prose-chat a { color: rgb(var(--i-300)); text-decoration: underline; }
+
+/* Scroll-in animations (see Reveal.tsx); they replay whenever an element re-enters view */
+.reveal-on-scroll {
+  opacity: 0;
+  transition: opacity 0.9s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1), filter 0.9s ease;
+}
+.reveal-up { transform: translateY(44px) scale(0.97); filter: blur(10px); }
+.reveal-left { transform: translateX(-56px); filter: blur(6px); }
+.reveal-zoom {
+  transform: scale(0.55) translateY(24px);
+  filter: blur(6px);
+  transition-timing-function: ease, cubic-bezier(0.34, 1.56, 0.64, 1), ease;
+}
+.reveal-on-scroll.is-visible { opacity: 1; transform: none; filter: none; }
+
+/* Mouse spotlight on the page (see MouseEffects.tsx) */
+.spotlight { opacity: 0; transition: opacity 0.4s; }
+.has-spotlight .spotlight {
+  opacity: 1;
+  background:
+    radial-gradient(140px circle at var(--mx, -1000px) var(--my, -1000px), rgb(var(--glow) / 0.22), transparent 70%),
+    radial-gradient(720px circle at var(--mx, -1000px) var(--my, -1000px), rgb(var(--glow) / 0.14), transparent 45%);
+}
+
+/* Glow that follows the cursor across cards (drawn as a background, behind content)… */
+.has-spotlight .card {
+  background-image: radial-gradient(420px circle at var(--x, -500px) var(--y, -500px), rgb(var(--glow) / 0.16), transparent 45%);
+}
+/* …plus a bright rim on the card border nearest the cursor. */
+.has-spotlight .card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  pointer-events: none;
+  background: radial-gradient(260px circle at var(--x, -500px) var(--y, -500px), rgb(var(--glow) / 0.9), transparent 60%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+/* Finder window zooms out of the clicked folder (--dx/--dy set in Projects.tsx) */
+.finder-open { animation: finder-open 0.42s cubic-bezier(0.2, 0.85, 0.25, 1) both; }
+.finder-close { animation: finder-close 0.22s ease-in both; }
+@keyframes finder-open {
+  from { opacity: 0; transform: translate(var(--dx, 0), var(--dy, 0)) scale(0.12); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes finder-close {
+  from { opacity: 1; transform: none; }
+  to { opacity: 0; transform: scale(0.94); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .finder-open, .finder-close { animation-duration: 0.01s; }
+  .reveal { animation: none; }
+  .reveal-on-scroll { opacity: 1; transform: none; filter: none; transition: none; }
+  .orb { animation: none; }
+  html { scroll-behavior: auto; }
+}
