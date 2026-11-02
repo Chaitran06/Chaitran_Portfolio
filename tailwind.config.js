@@ -11,11 +11,14 @@ export default {
     extend: {
       fontFamily: {
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],
-        mono: ["'JetBrains Mono'", "ui-monospace", "monospace"],
+        display: ["var(--font-display)", "var(--font-sans)", "sans-serif"],
+        mono: ["'IBM Plex Mono'", "ui-monospace", "monospace"],
       },
       colors: {
         white: "rgb(var(--white) / <alpha-value>)",
         gold: "rgb(var(--gold) / <alpha-value>)",
+        accent: "rgb(var(--accent-bg) / <alpha-value>)",
+        "on-accent": "rgb(var(--on-accent) / <alpha-value>)",
         zinc: scale("z", [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950]),
         ice: scale("i", [50, 200, 300, 400, 500, 600]),
       },

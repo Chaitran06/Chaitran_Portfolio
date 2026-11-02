@@ -96,8 +96,8 @@ function FolderIcon({
       <span
         className={`max-w-[9rem] rounded-md px-1.5 py-0.5 text-center text-[13px] font-medium leading-snug transition ${
           active
-            ? "bg-ice-500 text-zinc-950"
-            : "text-zinc-200 group-hover:bg-zinc-800/80 group-focus-visible:bg-ice-500 group-focus-visible:text-zinc-950"
+            ? "bg-accent text-on-accent"
+            : "text-zinc-200 group-hover:bg-zinc-800/80 group-focus-visible:bg-accent group-focus-visible:text-on-accent"
         }`}
       >
         {p.folderName}
@@ -270,7 +270,7 @@ function ProjectDetails({ project: p, onAskAI }: { project: Project; onAskAI: (q
       {p.metrics.length > 0 && (
         <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3">
           {p.metrics.map((m) => (
-            <div key={m.label} className="flex flex-col-reverse rounded-xl border border-zinc-800 bg-zinc-950/60 p-3">
+            <div key={m.label} className="flex flex-col-reverse rounded-lg border border-zinc-800 bg-zinc-950/60 p-3">
               <span className="mt-1 text-[11px] leading-tight text-zinc-500">{m.label}</span>
               <span className="font-mono text-lg font-bold text-white">{m.value}</span>
             </div>

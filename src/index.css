@@ -5,43 +5,48 @@
 /* ---------- Themes ----------
    --z-*: neutral scale, --i-*: main accent, --gold: second accent,
    --f-*: folder colours (macOS folders follow the system accent colour). */
-[data-theme="hero"] {
-  /* Hero Red, Iron Man inspired: hot-rod red, gold trim, arc-reactor cyan glow */
-  --font-sans: "Inter";
-  --white: 255 255 255;
-  --z-50: 252 250 249; --z-100: 245 240 238; --z-200: 232 224 222; --z-300: 214 202 200; --z-400: 170 148 148;
-  --z-500: 128 100 101; --z-600: 96 66 68; --z-700: 70 42 45; --z-800: 48 27 30; --z-900: 26 14 16; --z-950: 12 7 8;
-  --i-50: 255 240 240; --i-200: 252 165 165; --i-300: 248 113 113; --i-400: 208 32 40; --i-500: 168 18 28; --i-600: 130 12 20;
-  --gold: 242 182 50;
-  --glow: 125 249 255;
-  --f-back-1: #e8b23a; --f-back-2: #b9821a; --f-front-1: #e5484f; --f-front-2: #b3121b;
-}
-:root:not([data-theme]), [data-theme="light"] {
-  /* Clean Light (default) */
-  --font-sans: "Inter";
+[data-theme="light"] {
+  /* Clean Light */
   --white: 9 9 11;
   --z-50: 9 9 11; --z-100: 24 24 27; --z-200: 39 39 42; --z-300: 63 63 70; --z-400: 82 82 91;
   --z-500: 113 113 122; --z-600: 150 150 160; --z-700: 205 205 212; --z-800: 226 226 231; --z-900: 255 255 255; --z-950: 247 247 249;
-  --i-50: 236 254 255; --i-200: 14 116 144; --i-300: 14 116 144; --i-400: 8 145 178; --i-500: 6 182 212; --i-600: 21 94 117;
+  --i-50: 236 254 255; --i-200: 21 94 117; --i-300: 21 94 117; --i-400: 14 116 144; --i-500: 6 182 212; --i-600: 21 94 117;
   --gold: 21 94 117;
   --glow: 8 145 178;
+  --accent-bg: 14 116 144;
+  --on-accent: 255 255 255;
   --f-back-1: #3fa6e8; --f-back-2: #2a8bd4; --f-front-1: #8fdcfd; --f-front-2: #4ab8f2;
 }
 
+:root:not([data-theme]), [data-theme="obsidian"] {
+  /* Obsidian (default): near-black, wine red, warm ivory. Text accents use a lighter wine for contrast;
+     solid buttons use the deep wine with ivory text. */
+  --white: 246 241 231;
+  --z-50: 248 244 236; --z-100: 242 236 225; --z-200: 232 224 210; --z-300: 214 205 190; --z-400: 176 167 155;
+  --z-500: 142 133 124; --z-600: 98 90 87; --z-700: 66 60 60; --z-800: 44 39 40; --z-900: 24 21 22; --z-950: 14 12 13;
+  --i-50: 250 236 238; --i-200: 240 190 197; --i-300: 228 146 156; --i-400: 214 106 120; --i-500: 139 38 53; --i-600: 110 26 40;
+  --gold: 233 220 196;
+  --glow: 196 73 90;
+  --accent-bg: 139 38 53;
+  --on-accent: 246 241 231;
+  --f-back-1: #7a1f2c; --f-back-2: #5e1621; --f-front-1: #b8505f; --f-front-2: #8b2635;
+}
+
 /* Per-theme character beyond colour */
-[data-theme="hero"] .section-index { color: rgb(var(--gold)); }
-[data-theme="light"] .card { box-shadow: 0 1px 2px rgb(0 0 0 / 0.04), 0 8px 24px -12px rgb(0 0 0 / 0.08); backdrop-filter: none; }
+[data-theme="light"] .card { box-shadow: 0 1px 2px rgb(0 0 0 / 0.04), 0 8px 24px -12px rgb(0 0 0 / 0.08); }
 
 @layer base {
+  :root { --font-sans: "Inter"; --font-display: "Manrope"; }
+  h1, h2, h3, h4 { font-family: var(--font-display), var(--font-sans), sans-serif; }
   ::selection { @apply bg-ice-400/30 text-white; }
   section[id] { scroll-margin-top: 5rem; }
 }
 
 @layer components {
-  .card { @apply relative rounded-2xl border border-zinc-800/80 bg-zinc-900/40 backdrop-blur-sm; }
+  .card { @apply relative rounded-lg border border-zinc-800 bg-zinc-900/80; }
   .chip { @apply inline-flex items-center rounded-md border border-zinc-800 bg-zinc-900/80 px-2 py-0.5 font-mono text-[11px] text-zinc-400; }
   .btn { @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-medium transition focus:outline-none focus-visible:ring-2 focus-visible:ring-ice-400/60 disabled:cursor-not-allowed disabled:opacity-50; }
-  .btn-primary { @apply btn bg-ice-400 text-zinc-950 hover:bg-ice-300; }
+  .btn-primary { @apply btn bg-accent text-on-accent hover:bg-accent/90; }
   .btn-ghost { @apply btn border border-zinc-800 bg-zinc-900/60 text-zinc-200 hover:border-zinc-700 hover:bg-zinc-800/80; }
   .icon-btn { @apply inline-flex h-10 w-10 items-center justify-center rounded-lg border border-zinc-800 bg-zinc-900/60 text-zinc-400 transition hover:border-zinc-700 hover:text-white; }
 }

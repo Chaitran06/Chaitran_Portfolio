@@ -50,13 +50,6 @@ export default function Journey() {
                 </Reveal>
               ))}
             </div>
-            <div className="mt-4 flex flex-wrap gap-1.5">
-              {profile.coursework.map((c) => (
-                <span key={c} className="chip">
-                  {c}
-                </span>
-              ))}
-            </div>
           </div>
 
           <div>

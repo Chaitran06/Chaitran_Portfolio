@@ -131,13 +131,13 @@ export default function ChatPanel({
             <div ref={scrollRef} className="flex-1 space-y-4 overflow-y-auto px-4 py-4" aria-live="polite">
               {messages.map((m, i) =>
                 m.role === "user" ? (
-                  <div key={i} className="ml-10 rounded-2xl rounded-br-md bg-ice-400 px-3.5 py-2.5 text-sm text-zinc-950">
+                  <div key={i} className="ml-10 rounded-xl rounded-br-sm bg-accent px-3.5 py-2.5 text-sm text-on-accent">
                     {m.content}
                   </div>
                 ) : (
                   <div
                     key={i}
-                    className="mr-6 rounded-2xl rounded-bl-md border border-zinc-800 bg-zinc-900/70 px-3.5 py-2.5 text-sm leading-relaxed text-zinc-300"
+                    className="mr-6 rounded-xl rounded-bl-sm border border-zinc-800 bg-zinc-900/70 px-3.5 py-2.5 text-sm leading-relaxed text-zinc-300"
                   >
                     {m.content ? (
                       <div className="prose-chat">
@@ -160,7 +160,7 @@ export default function ChatPanel({
                     <button
                       key={s}
                       onClick={() => send(s)}
-                      className="block w-full rounded-xl border border-zinc-800 px-3 py-2 text-left text-sm text-zinc-300 transition hover:border-ice-400/40 hover:bg-zinc-900"
+                      className="block w-full rounded-lg border border-zinc-800 px-3 py-2 text-left text-sm text-zinc-300 transition hover:border-ice-400/40 hover:bg-zinc-900"
                     >
                       {s}
                     </button>
@@ -189,7 +189,7 @@ export default function ChatPanel({
                 rows={1}
                 maxLength={1500}
                 placeholder="Ask anything about Chaitran…"
-                className="max-h-32 flex-1 resize-none rounded-xl border border-zinc-800 bg-zinc-900 px-3 py-2.5 text-sm text-zinc-100 placeholder:text-zinc-600 focus:border-ice-400/50 focus:outline-none"
+                className="max-h-32 flex-1 resize-none rounded-lg border border-zinc-800 bg-zinc-900 px-3 py-2.5 text-sm text-zinc-100 placeholder:text-zinc-600 focus:border-ice-400/50 focus:outline-none"
               />
               <button type="submit" disabled={busy || !input.trim()} className="btn-primary !h-10 !w-10 !p-0" aria-label="Send">
                 {busy ? <Loader2 className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />}

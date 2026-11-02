@@ -94,7 +94,7 @@ export default function JDMatcher() {
             maxLength={12000}
             rows={9}
             placeholder="Paste the role title, responsibilities and requirements here…"
-            className="w-full resize-y rounded-xl border border-zinc-800 bg-zinc-950/70 p-4 font-mono text-[13px] leading-relaxed text-zinc-200 placeholder:text-zinc-600 focus:border-ice-400/50 focus:outline-none focus:ring-2 focus:ring-ice-400/20"
+            className="w-full resize-y rounded-lg border border-zinc-800 bg-zinc-950/70 p-4 font-mono text-[13px] leading-relaxed text-zinc-200 placeholder:text-zinc-600 focus:border-ice-400/50 focus:outline-none focus:ring-2 focus:ring-ice-400/20"
           />
           <div className="mt-3 flex flex-wrap items-center justify-between gap-3">
             <p className="text-xs text-zinc-500">{jd.length.toLocaleString()} / 12,000 characters · nothing is stored</p>
@@ -240,7 +240,7 @@ function MatchReport({ result: r }: { result: MatchResult }) {
         </ListCard>
       )}
 
-      <div className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-ice-400/20 bg-ice-400/5 p-5">
+      <div className="flex flex-wrap items-center justify-between gap-4 rounded-lg border border-ice-400/20 bg-ice-400/5 p-5">
         <p className="text-sm text-zinc-300">Like what you see? Let's talk about the role.</p>
         <a href={`mailto:${profile.email}?subject=${encodeURIComponent(`Opportunity: ${r.roleTitle}`)}`} className="btn-primary">
           <Mail className="h-4 w-4" /> Contact Chaitran

@@ -4,12 +4,12 @@ import { Palette, X } from "lucide-react";
 // Visitor-facing theme picker. Theme colours live in index.css; the list of
 // valid ids is also in the inline script in index.html.
 const THEMES = [
-  { id: "light", label: "Clean Light", swatch: ["#f7f7f9", "#0891b2"] },
-  { id: "hero", label: "Hero Red", swatch: ["#c1121f", "#f2b632"] },
+  { id: "obsidian", label: "Obsidian", swatch: ["#0e0c0d", "#8b2635"] },
+  { id: "light", label: "Clean Light", swatch: ["#f7f7f9", "#0e7490"] },
 ] as const;
 
 export default function ThemeSwitcher() {
-  const [theme, setTheme] = useState(() => document.documentElement.dataset.theme || "light");
+  const [theme, setTheme] = useState(() => document.documentElement.dataset.theme || "obsidian");
   const [open, setOpen] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
 
@@ -30,14 +30,14 @@ export default function ThemeSwitcher() {
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
-    localStorage.setItem("theme-v3", theme);
+    localStorage.setItem("theme-v4", theme);
   }, [theme]);
 
   if (!open) {
     return (
       <button
         onClick={() => setOpen(true)}
-        className="fixed bottom-5 left-5 z-50 flex h-11 w-11 items-center justify-center rounded-full border border-zinc-700 bg-zinc-900/90 text-zinc-200 shadow-lg backdrop-blur"
+        className="fixed bottom-5 left-5 z-50 flex h-11 w-11 items-center justify-center rounded-full border border-zinc-700 bg-zinc-900 text-zinc-200 shadow-lg"
         aria-label="Choose a theme"
       >
         <Palette className="h-5 w-5 text-ice-400" />
@@ -48,7 +48,7 @@ export default function ThemeSwitcher() {
   return (
     <div
       ref={panelRef}
-      className="fixed bottom-5 left-5 z-50 rounded-2xl border border-zinc-700 bg-zinc-900/90 p-3 shadow-2xl backdrop-blur-xl"
+      className="fixed bottom-5 left-5 z-50 rounded-lg border border-zinc-700 bg-zinc-900 p-3 shadow-2xl"
     >
       <div className="mb-2 flex items-center justify-between gap-6">
         <p className="flex items-center gap-1.5 text-xs font-semibold text-zinc-200">

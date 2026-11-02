@@ -56,7 +56,7 @@ export default function App() {
 
       <button
         onClick={() => openChat()}
-        className={`fixed bottom-5 right-5 z-50 flex items-center gap-2 rounded-full bg-ice-400 py-3 pl-4 pr-5 font-medium text-zinc-950 shadow-lg shadow-ice-500/20 transition-all duration-300 hover:scale-105 hover:bg-ice-300 ${
+        className={`fixed bottom-5 right-5 z-50 flex items-center gap-2 rounded-full bg-accent py-3 pl-4 pr-5 font-medium text-on-accent shadow-lg shadow-ice-500/20 transition-all duration-300 hover:scale-105 hover:bg-accent/90 ${
           chatInView ? "pointer-events-none translate-y-6 opacity-0" : "translate-y-0 opacity-100"
         }`}
         aria-label="Go to AI assistant"
