@@ -4,15 +4,12 @@ import { Palette, X } from "lucide-react";
 // Visitor-facing theme picker. Theme colours live in index.css; the list of
 // valid ids is also in the inline script in index.html.
 const THEMES = [
-  { id: "knight", label: "Dark Knight", swatch: ["#050912", "#298cff"] },
-  { id: "hero", label: "Hero Red", swatch: ["#c1121f", "#f2b632"] },
   { id: "light", label: "Clean Light", swatch: ["#f7f7f9", "#0891b2"] },
-  { id: "terminal", label: "Terminal", swatch: ["#040805", "#4ade80"] },
-  { id: "sunset", label: "Sunset", swatch: ["#0c0a09", "#fb923c"] },
+  { id: "hero", label: "Hero Red", swatch: ["#c1121f", "#f2b632"] },
 ] as const;
 
 export default function ThemeSwitcher() {
-  const [theme, setTheme] = useState(() => document.documentElement.dataset.theme || "knight");
+  const [theme, setTheme] = useState(() => document.documentElement.dataset.theme || "light");
   const [open, setOpen] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
 
@@ -33,7 +30,7 @@ export default function ThemeSwitcher() {
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
-    localStorage.setItem("theme-v2", theme);
+    localStorage.setItem("theme-v3", theme);
   }, [theme]);
 
   if (!open) {
