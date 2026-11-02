@@ -147,6 +147,28 @@ export const profile = {
       featured: true,
     },
     {
+      id: "restaurant-agent",
+      folderName: "Restaurant Order Agent",
+      title: "Agentic Restaurant Order Management System (LangGraph)",
+      category: "GenAI",
+      context: "Multi-agent LLM workflow",
+      summary:
+        "A stateful multi-agent workflow that takes a free-text food order, checks stock, then handles cooking, serving, retries and failures through one typed state.",
+      highlights: [
+        "Built a LangGraph workflow with 9 nodes and conditional routing, sharing one typed state across the whole order lifecycle.",
+        "Used an LLM (Groq, GPT-OSS-120B) to extract the dish and quantity from free-text orders as structured JSON. A guardrail rejects requests that aren't food orders, and the LLM writes the replies to the customer.",
+        "Added inventory checks (fully / partly / not available) with separate retry limits for ordering (3), cooking (2) and serving (2). Cooking and serving fail at random 40% of the time to exercise the failure paths.",
+        "Wrote a scenario-based test harness that checks the exact path taken through the graph; all 3 end-to-end test cases passed.",
+      ],
+      metrics: [
+        { value: "9", label: "graph nodes" },
+        { value: "3/3", label: "end-to-end tests passed" },
+        { value: "40%", label: "injected failure rate" },
+      ],
+      tags: ["LangGraph", "Multi-agent", "LLM", "Groq", "Structured outputs", "Guardrails", "Python"],
+      links: [{ label: "GitHub", url: "https://github.com/Chaitran06/AI_Learning/tree/main/week5/day20" }],
+    },
+    {
       id: "vectordb",
       folderName: "C++ Vector DB",
       title: "Vector Database & Local RAG System in C++",
@@ -258,7 +280,7 @@ export const profile = {
     },
     {
       group: "LLMs & GenAI",
-      items: ["RAG", "Hybrid search (dense + BM25)", "Vector databases (Qdrant, HNSW)", "Embeddings", "Agents & tool calling", "Structured outputs", "RAG evaluation", "Ollama", "Whisper", "Groq / OpenAI-style APIs"],
+      items: ["RAG", "Hybrid search (dense + BM25)", "Vector databases (Qdrant, HNSW)", "Embeddings", "Agents & tool calling", "LangGraph", "Structured outputs", "RAG evaluation", "Ollama", "Whisper", "Groq / OpenAI-style APIs"],
     },
     { group: "Data & Scientific", items: ["NumPy", "Pandas", "xarray", "SciPy", "NetCDF", "Matplotlib", "ERA5 reanalysis", "Significance testing"] },
     { group: "Backend & Web", items: ["FastAPI", "Flask", "REST APIs", "SQLAlchemy", "PostgreSQL", "React", "TanStack Query"] },
