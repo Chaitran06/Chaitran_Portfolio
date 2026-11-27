@@ -32,7 +32,7 @@ export const profile = {
   about: [
     "I'm an M.Tech student in Mathematics and Computing at NIT Delhi, with a B.Tech in Computer Science (IoT) from VIT Vellore. My core interest is AI/ML.",
     "My research applies vision transformers to climate science: Swin-Transformer U-Nets that forecast Arctic sea ice 1-6 months ahead, evaluated with leakage-free cross-validation, ablations and significance testing.",
-    "On the applied side, I build LLM systems such as hybrid-search RAG pipelines, agents, structured-output extractors and a vector database written from scratch in C++. I also build the FastAPI and React services around them.",
+    "On the applied side, I build LLM systems: hybrid-search RAG pipelines, LangGraph and multi-agent workflows, a coding agent, MCP tools, and a vector database written from scratch in C++. I also build the FastAPI and React services around them.",
   ],
   focusAreas: [
     {
@@ -41,7 +41,7 @@ export const profile = {
     },
     {
       title: "LLM & RAG systems",
-      text: "Hybrid retrieval (dense + BM25), vector databases, agents, grounding checks and RAG evaluation on golden datasets.",
+      text: "Hybrid retrieval (dense + BM25), vector databases, LangGraph and multi-agent workflows, MCP tools, and RAG evaluation on golden datasets.",
     },
     {
       title: "Rigorous evaluation",
@@ -76,20 +76,31 @@ export const profile = {
   ],
   experience: [
     {
-      role: "Artificial Intelligence Intern",
-      org: "SmartBridge (with IBM)",
+      role: "Artificial Intelligence Intern · Computer Vision & Recommender Systems",
+      org: "Smart Bridge",
       period: "May 2023 – Jul 2023",
       points: [
-        "Built an emotion-based movie recommendation system, with movie data collected by Python web scraping from multiple online sources.",
-        "Developed an emotion-driven recommendation model using NLP and sentiment analysis to suggest movies matching the user's emotional state.",
-        "Delivered real-time recommendations through an interactive Flask web interface.",
+        "Co-developed, in a 4-member team, an end-to-end AI application that recommends movies from a user's live facial emotion, combining computer vision, web scraping and a Flask web app.",
+        "Built a real-time emotion recognition pipeline using OpenCV face detection and a pre-trained DeepFace (TensorFlow) model, classifying 7 emotions over a 5-second webcam stream via frame-level majority voting.",
+        "Engineered the recommendation layer by mapping emotions to genres and scraping live IMDb listings with BeautifulSoup, serving the top 10 movies with ratings and posters through Flask routes.",
       ],
     },
     {
-      role: "Placement Coordinator",
+      role: "M.Tech Student Head, Training & Placement (TnP)",
       org: "NIT Delhi",
       period: "Jan 2026 – May 2027",
-      points: ["Coordinate campus placement activities between recruiters and students."],
+      points: [
+        "Lead the M.Tech student side of campus placements at NIT Delhi.",
+        "Spearheaded outreach to 200+ HRs and hiring managers via LinkedIn, cold email and calls, converting 15% into first-time recruiters for CSE and ECE/EE roles and expanding opportunities for 300+ students.",
+      ],
+    },
+    {
+      role: "Deputy General Secretary",
+      org: "Upvision (Technical Club), NIT Delhi",
+      period: "Aug 2025 – May 2026",
+      points: [
+        "Bridged the campus–industry gap by organizing 5+ hands-on workshops, mock technical interviews and alumni tech talks on DSA, System Design and GenAI, upskilling 300+ students.",
+      ],
     },
     {
       role: "Core Committee Member",
@@ -229,6 +240,64 @@ export const profile = {
       links: [{ label: "GitHub", url: "https://github.com/Chaitran06/Newtonite" }],
     },
     {
+      id: "multi-agent",
+      folderName: "Multi-Agent Researcher",
+      title: "Multi-Agent Research Assistant (single vs multi-agent)",
+      category: "GenAI",
+      context: "Agent architecture comparison",
+      summary:
+        "The same research assistant built twice, as one agent and as a manager with specialist helpers, to compare the two designs on a complex query that mixes web search and maths.",
+      highlights: [
+        "Both versions use Groq (gpt-oss-120b), Tavily web search and a safe AST-based calculator, with a limit of 5 attempts.",
+        "Single agent: one LLM holds both tools and decides which to call and how often.",
+        "Multi-agent: a Manager that only delegates (no chat history; its memory is a manager_notes.md file of every helper's reply), plus a search-only helper and a calculator-only helper, each defined by its own system prompt.",
+        "Tracked token usage per agent to compare cost. Finding: specialised roles keep each agent focused, but every extra LLM call adds tokens, so multi-agent only pays off when the task needs it.",
+      ],
+      metrics: [
+        { value: "3", label: "LLM roles (multi-agent)" },
+        { value: "2", label: "tools: search + calculator" },
+      ],
+      tags: ["Multi-agent", "Tool calling", "Groq", "Tavily", "Token tracking", "Python"],
+      links: [{ label: "GitHub", url: "https://github.com/Chaitran06/AI_Learning/tree/main/week5/multiagent" }],
+    },
+    {
+      id: "coding-agent",
+      folderName: "Coding Agent",
+      title: "Coding Agent: Bug Fixer for C++",
+      category: "GenAI",
+      context: "Agent built as a plain Python loop",
+      summary:
+        "A CLI agent that fixes simple bugs in a C++ file: you describe the bug in plain English, and the agent finds and edits the right line, then checks that the code still compiles.",
+      highlights: [
+        "Three tools used in sequence: search_files (find related files), search_in_file (find matching line numbers) and replace_line (edit one line).",
+        "After each attempt it verifies that an edit was made and that the file still compiles with g++.",
+        "Retries up to 3 times, then reports that it cannot solve the bug. Every tool call is printed, so the whole flow is visible.",
+        "Built without LangGraph, as a plain Python loop of LLM calls and file tools.",
+      ],
+      metrics: [
+        { value: "3", label: "file tools" },
+        { value: "3", label: "max attempts" },
+      ],
+      tags: ["Coding agent", "Tool calling", "C++", "g++ verification", "Python"],
+      links: [{ label: "GitHub", url: "https://github.com/Chaitran06/AI_Learning/tree/main/week6/codingagent" }],
+    },
+    {
+      id: "mcp-server",
+      folderName: "MCP Server",
+      title: "Custom MCP Server Connected to Claude",
+      category: "GenAI",
+      context: "Model Context Protocol",
+      summary: "A custom MCP server written in Python (Chaitran_MCP_Calculator) that plugs my own tool into Claude.",
+      highlights: [
+        "Exposes a chaitran_add tool through the @mcp.tool() decorator.",
+        "The tool deliberately adds +100 to every result, which proves Claude is calling my tool rather than doing the maths itself.",
+        "Takeaway: MCP is a standard way to plug your own tools into any LLM client.",
+      ],
+      metrics: [],
+      tags: ["MCP", "Python", "Claude", "Tool integration"],
+      links: [{ label: "GitHub", url: "https://github.com/Chaitran06/AI_Learning/tree/main/week6/my_mcp_server" }],
+    },
+    {
       id: "llm-eng",
       folderName: "LLM Engineering",
       title: "LLM Engineering: Agents, RAG & Evaluators",
@@ -241,6 +310,7 @@ export const profile = {
         "Built a ReAct agent from scratch, a tool-calling agent (web search and calculator), prompt chaining and a streaming chatbot.",
         "YouTube Playlist RAG (DSA assistant): yt-dlp, Whisper transcription, MiniLM embeddings and Qdrant.",
         "Compared chunking strategies, evaluated RAG on a golden dataset, and used Qdrant Cloud with metadata filters.",
+        "LangGraph fundamentals: shared typed state, nodes, conditional edges and loops.",
       ],
       metrics: [],
       tags: ["LLM APIs", "ReAct", "Tool calling", "Whisper", "Qdrant", "Pydantic", "RAG evaluation"],
@@ -273,22 +343,22 @@ export const profile = {
     },
   ],
   skills: [
-    { group: "Languages", items: ["Python", "C++", "SQL / MySQL", "TypeScript", "JavaScript", "MATLAB", "PHP", "HTML/CSS"] },
+    { group: "Languages & CS", items: ["Python", "C++", "SQL / MySQL", "TypeScript", "JavaScript", "MATLAB", "Data Structures & Algorithms", "OOP", "System Design"] },
     {
       group: "ML & Deep Learning",
-      items: ["TensorFlow / Keras", "scikit-learn", "statsmodels", "Swin Transformer", "U-Net", "CNN", "LSTM / RNN", "Time-series forecasting", "Computer vision", "NLP"],
+      items: ["TensorFlow / Keras", "scikit-learn", "statsmodels", "Swin Transformer", "U-Net", "CNN", "LSTM / RNN", "YOLO", "Transfer learning", "Supervised learning (classification, regression)", "Time-series forecasting", "Computer vision", "NLP"],
     },
     {
       group: "LLMs & GenAI",
-      items: ["RAG", "Hybrid search (dense + BM25)", "Vector databases (Qdrant, HNSW)", "Embeddings", "Agents & tool calling", "LangGraph", "Structured outputs", "RAG evaluation", "Ollama", "Whisper", "Groq / OpenAI-style APIs"],
+      items: ["LangGraph", "LangChain", "Multi-agent systems", "MCP", "Agents & tool calling", "Prompt engineering", "RAG", "RAG evaluation", "Hybrid search (dense + BM25)", "Vector databases (Qdrant, HNSW)", "Embeddings", "Structured outputs", "Ollama", "Whisper", "Groq / OpenAI-style APIs"],
     },
-    { group: "Data & Scientific", items: ["NumPy", "Pandas", "xarray", "SciPy", "NetCDF", "Matplotlib", "ERA5 reanalysis", "Significance testing"] },
-    { group: "Backend & Web", items: ["FastAPI", "Flask", "REST APIs", "SQLAlchemy", "PostgreSQL", "React", "TanStack Query"] },
-    { group: "Tools & Cloud", items: ["Git", "Google Cloud Platform", "Vercel", "Hugging Face Spaces", "Kaggle GPUs", "VS Code", "Android Studio"] },
+    { group: "Data & Scientific", items: ["NumPy", "Pandas", "xarray", "SciPy", "NetCDF", "Matplotlib", "Seaborn", "ERA5 reanalysis", "Significance testing"] },
+    { group: "Backend & Web", items: ["FastAPI", "Flask", "REST APIs", "Pydantic", "SQLAlchemy", "PostgreSQL", "React", "TanStack Query"] },
+    { group: "Tools & Cloud", items: ["Git", "Google Cloud Platform", "Vercel", "Hugging Face Spaces", "Kaggle GPUs", "Jupyter", "Anaconda", "VS Code"] },
   ],
   achievements: [
     "Ranked 6,160 out of 1,43,265 candidates in TS EAMCET (May 2020).",
-    "Placement Coordinator at NIT Delhi (Jan 2026 – May 2027).",
+    "M.Tech Student Head, Training & Placement, NIT Delhi: converted 15% of 200+ contacted HRs into first-time recruiters, for 300+ students.",
     "Regular DSA practice in C++ on LeetCode and GeeksforGeeks (public GitHub repo).",
   ],
 };
